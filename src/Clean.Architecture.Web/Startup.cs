@@ -35,7 +35,7 @@ namespace Clean.Architecture.Web
 			string connectionString = Configuration.GetConnectionString("SqliteConnection");  //Configuration.GetConnectionString("DefaultConnection");
 
 			services.AddDbContext(connectionString);
-
+			//asds
 			services.AddControllersWithViews().AddNewtonsoftJson();
 			services.AddRazorPages();
 
