@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ardalis.EFCore.Extensions;
+using Clean.Architecture.Core.Model;
 using Clean.Architecture.Core.ProjectAggregate;
 using Clean.Architecture.SharedKernel;
 using MediatR;
@@ -22,14 +23,28 @@ namespace Clean.Architecture.Infrastructure.Data
         {
             _mediator = mediator;
         }
-
-        public DbSet<ToDoItem> ToDoItems { get; set; }
-        public DbSet<Project> Projects { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category_Post> Category_Posts { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+       // public DbSet<ToDoItem> ToDoItems { get; set; }
+       // public DbSet<Project> Projects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Category_Post>()
+                .HasOne(b => b.Category)
+                .WithMany(b => b.Category_Posts)
+                .HasForeignKey(b => b.CategoryId);
+
+            modelBuilder.Entity<Category_Post>()
+                .HasOne(b => b.Post)
+                .WithMany(b => b.Category_Posts)
+                .HasForeignKey(b => b.PostId);
+                   
             modelBuilder.ApplyAllConfigurationsFromCurrentAssembly();
 
             // alternately this is built-in to EF Core 2.2
