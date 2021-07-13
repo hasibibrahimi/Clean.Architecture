@@ -14,6 +14,8 @@ namespace Clean.Architecture.Core.Model
         public DateTime DatePublished { get; set; }
         public List<Category_Post>  Category_Posts { get; set; }
         public User User { get; set; }
+        public int UserId { get; set; }
+
 
 
     }

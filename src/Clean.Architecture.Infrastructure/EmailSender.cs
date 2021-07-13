@@ -22,8 +22,7 @@ namespace Clean.Architecture.Infrastructure
 
                 From = new MailAddress(from),
                 Subject = subject,
-                Body = body
-
+                Body = body 
 
             };
             message.To.Add(new MailAddress(to));

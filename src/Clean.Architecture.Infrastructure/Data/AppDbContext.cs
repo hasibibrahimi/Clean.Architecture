@@ -32,6 +32,7 @@ namespace Clean.Architecture.Infrastructure.Data
                 .HasOne(b => b.Post)
                 .WithMany(b => b.Category_Posts)
                 .HasForeignKey(b => b.PostId);
+            
 
 
             // alternately this is built-in to EF Core 2.2

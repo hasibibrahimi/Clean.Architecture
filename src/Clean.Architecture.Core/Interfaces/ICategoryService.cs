@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Clean.Architecture.Core.Interfaces
 {
-   public interface IPostService
+    public interface ICategoryService
     {
-       public  void AddPost(PostDTO post);
-        public List<Post> GetPost();
-
+        public void AddCategory(CategoryDTO category);
+        public List<Category> GetCategory();
     }
 }

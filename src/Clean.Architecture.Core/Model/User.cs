@@ -12,6 +12,7 @@ namespace Clean.Architecture.Core.Model
         public string UserName { get; set; }
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }
+        public int UserRoleId { get; set; }
         public UserRole UserRole { get; set; }
         public List<Post> Posts { get; set; }
     }

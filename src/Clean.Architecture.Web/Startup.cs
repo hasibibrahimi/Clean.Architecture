@@ -2,6 +2,7 @@
 using Ardalis.ListStartupServices;
 using Autofac;
 using Clean.Architecture.Core;
+using Clean.Architecture.Core.Interfaces;
 using Clean.Architecture.Infrastructure;
 using Clean.Architecture.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
@@ -40,7 +41,10 @@ namespace Clean.Architecture.Web
 			//asds
 			services.AddControllersWithViews().AddNewtonsoftJson();
 			services.AddRazorPages();
-
+			services.AddTransient<IPostService, DatabasePostService>();
+			services.AddTransient<ICategoryService, DatabaseCategoryService>();
+			services.AddTransient<IUserService, DatabaseUserService>();
+			services.AddTransient<IUserRoleService, DatabaseUserRoleService>();
 			services.AddSwaggerGen(c => {
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 				c.EnableAnnotations();
