@@ -16,3 +16,4 @@ namespace Clean.Architecture.Core.Model
         public List<Post> Posts { get; set; }
     }
 }
+

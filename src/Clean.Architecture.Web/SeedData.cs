@@ -29,7 +29,7 @@ namespace Clean.Architecture.Web
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var dbContext = new AppDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
+                serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>()))
             {
                 // Look for any TODO items.
                // if (dbContext.ToDoItems.Any())

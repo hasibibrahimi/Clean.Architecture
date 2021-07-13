@@ -13,3 +13,4 @@ namespace Clean.Architecture.Core.Model
         public List<User> Users { get; set; }
     }
 }
+

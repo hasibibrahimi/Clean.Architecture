@@ -16,3 +16,4 @@ namespace Clean.Architecture.Core.Model
     }
 
 }
+

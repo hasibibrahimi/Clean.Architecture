@@ -33,7 +33,7 @@ namespace Clean.Architecture.IntegrationTests.Data
             var options = CreateNewContextOptions();
             var mockMediator = new Mock<IMediator>();
 
-            _dbContext = new AppDbContext(options, mockMediator.Object);
+            _dbContext = new AppDbContext(options);
             return new EfRepository<Project>(_dbContext);
         }
     }
