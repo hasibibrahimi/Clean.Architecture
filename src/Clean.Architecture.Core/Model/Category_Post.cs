@@ -14,6 +14,5 @@ namespace Clean.Architecture.Core.Model
         public Category Category { get; set; }
         public Post Post { get; set; }
     }
-
 }
 

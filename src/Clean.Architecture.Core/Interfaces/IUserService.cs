@@ -11,6 +11,7 @@ namespace Clean.Architecture.Core.Interfaces
     public interface IUserService
     {
         public void AddUser(UserDTO user);
-        public List<User> GetUser();
+        public List<UserwithPostDTO> GetUser();
+        public UserwithPostDTO GetUserWithId(int id);
     }
 }

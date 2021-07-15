@@ -34,58 +34,82 @@ namespace Clean.Architecture.Web.Controllers
             _userService = userService;
             _userRoleService = userRoleService;
         }
-        [HttpPost("UserRole Post")]
+        [HttpPost("UserRole")]
         public IActionResult AddUserRole(UserRoleDTO userRole)
         {
             _userRoleService.AddUserRole(userRole);
             return Ok();
         }
-        [HttpGet("UserRole Get")]
+        [HttpGet("UserRole")]
         public IActionResult GetUserRole()
         {
             var temp = _userRoleService.GetUserRole();
             return Ok(temp);
         }
-        [HttpPost("Post User")]
+        [HttpGet("UserRole-with-id/{id}")]
+        public IActionResult GetUserRoleWithId(int id)
+        {
+            var temp = _userRoleService.GetUserRoleWithId(id);
+            return Ok(temp);
+        }
+
+        [HttpPost("User")]
         public IActionResult AddUser(UserDTO user)
         {
             _userService.AddUser(user);
             return Ok();
         }
-        [HttpGet("Get users")]
+        [HttpGet("User")]
         public IActionResult GetUser()
         {
-         var temp=   _userService.GetUser();
+         var temp=_userService.GetUser();
             return Ok(temp);
-
         }
-        [HttpPost("Category post")]
+        [HttpGet("User-with-id/{id}")]
+        public IActionResult GetUserWithId(int id)
+        {
+            var _response = _userService.GetUserWithId(id);
+            return Ok(_response);
+        }
+        [HttpPost("Category")]
         public IActionResult AddCategory(CategoryDTO category)
         {
             _categoryService.AddCategory(category);
             return Ok();
         }
-        [HttpGet("Category Get")]
+        [HttpGet("Category")]
         public IActionResult GetCategory()
         {
             var temp = _categoryService.GetCategory();
             return Ok(temp);
         }
+        [HttpGet("Category-with-id/{id}")]
+        public IActionResult GetCategorywithId(int id)
+        {
+            var response = _categoryService.GetCategoryWithId(id);
+            return Ok(response);
+        }
 
-        [HttpPost("Posting a Post")]
+        [HttpPost("Post")]
         public IActionResult PostPost(PostDTO post)
         {
             _postService.AddPost(post);
             return Ok();
         }
-        [HttpGet("Get Post")]
+        [HttpGet("Post")]
         public IActionResult GetPost()
         {
              var temp=_postService.GetPost();
             return Ok(temp);
         }
+        [HttpGet("Post-with-id/{id}")]
+        public IActionResult GetPostWithId(int id)
+        {
+            var _response = _postService.GetPostWithId(id);
+            return Ok(_response);
+        }
         // GET project/{projectId?}
-        [HttpGet("{projectId:int}")]
+        /*[HttpGet("{projectId:int}")]
         public async Task<IActionResult> Index(int projectId = 1)
         {
             var spec = new ProjectByIdWithItemsSpec(projectId);
@@ -100,6 +124,6 @@ namespace Clean.Architecture.Web.Controllers
                             .ToList()
             };
             return View(dto);
-        }
+        }*/
     }
 }

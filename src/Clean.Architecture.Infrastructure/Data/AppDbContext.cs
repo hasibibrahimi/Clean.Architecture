@@ -23,18 +23,16 @@ namespace Clean.Architecture.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+     
+            modelBuilder.Entity<Category_Post>()
+               .HasOne(b => b.Post)
+               .WithMany(b => b.Category_Posts)
+               .HasForeignKey(bi => bi.PostId);
+
             modelBuilder.Entity<Category_Post>()
                 .HasOne(b => b.Category)
                 .WithMany(b => b.Category_Posts)
-                .HasForeignKey(b => b.CategoryId);
-
-            modelBuilder.Entity<Category_Post>()
-                .HasOne(b => b.Post)
-                .WithMany(b => b.Category_Posts)
-                .HasForeignKey(b => b.PostId);
-            
-
-
+                .HasForeignKey(bi => bi.CategoryId);
             // alternately this is built-in to EF Core 2.2
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

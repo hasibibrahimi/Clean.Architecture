@@ -12,6 +12,7 @@ namespace Clean.Architecture.Core.Dto_Classes
     }
     public class CategoryWithPostDTO
     {
+        public int Id { get; set; }
         public string CategoryName { get; set; }
         public List<string> Category_Posts { get; set; }
     }

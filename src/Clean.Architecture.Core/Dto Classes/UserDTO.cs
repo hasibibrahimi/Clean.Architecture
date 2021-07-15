@@ -14,8 +14,10 @@ namespace Clean.Architecture.Core.Dto_Classes
         public int UserRoleId { get; set; }
         public List<int> PostsId { get; set; }
     }
+   
     public class UserwithPostDTO
     {
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }

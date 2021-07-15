@@ -13,7 +13,16 @@ namespace Clean.Architecture.Core.Dto_Classes
     }
     public class UserRoleWithUserDTO
     {
-       public string UserRoleName { get; set; }
-        public List<User> Users { get; set; }
+        public int Id { get; set; }
+        public string UserRoleName { get; set; }
+        public List<UserWithRoleDTO> Users { get; set; }
     }
+    public class UserWithRoleDTO
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
+        public string UserPassword { get; set; }
+    }
+
 }

@@ -11,6 +11,7 @@ namespace Clean.Architecture.Core.Interfaces
     public interface IUserRoleService
     {
          public void AddUserRole(UserRoleDTO userRole);
-        public List<UserRole> GetUserRole();
+        public List<UserRoleWithUserDTO> GetUserRole();
+        public UserRoleWithUserDTO GetUserRoleWithId(int id);
     }
 }

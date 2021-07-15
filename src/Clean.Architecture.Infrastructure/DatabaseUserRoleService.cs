@@ -2,6 +2,7 @@
 using Clean.Architecture.Core.Interfaces;
 using Clean.Architecture.Core.Model;
 using Clean.Architecture.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,45 @@ namespace Clean.Architecture.Infrastructure
             _context.UserRoles.Add(_userRole);
             _context.SaveChanges();
         }
-        public List<UserRole> GetUserRole()
+        public List<UserRoleWithUserDTO> GetUserRole()
         {
-            return _context.UserRoles.ToList();
+            var userRoles = _context.UserRoles.Include(t => t.Users);
+            var r = userRoles;
+            List<UserRoleWithUserDTO> asd = new List<UserRoleWithUserDTO>();
+            foreach (var item in r)
+            {
+                var _dto = new UserRoleWithUserDTO()
+                {
+                    Id=item.Id,
+                    UserRoleName=item.UserRoleName,
+                    Users = item.Users.Select(n => new UserWithRoleDTO()
+                    {
+                        Id=n.Id,
+                        UserName = n.UserName,
+                        UserEmail = n.UserEmail,
+                        UserPassword = n.UserPassword
+                    }).ToList()
+                };
+                asd.Add(_dto);
+            }
+            return asd;
+        }
+
+        public UserRoleWithUserDTO GetUserRoleWithId(int id)
+        {
+            var _userRole = _context.UserRoles.Where(n => n.Id == id).Select(n => new UserRoleWithUserDTO()
+            {
+                UserRoleName = n.UserRoleName,
+                Users = n.Users.Select(n => new UserWithRoleDTO()
+                {
+                    Id=n.Id,
+                    UserName = n.UserName,
+                    UserEmail=n.UserEmail,
+                    UserPassword=n.UserPassword          
+                }).ToList()
+            }).FirstOrDefault();
+            return _userRole;
+
         }
     }
 }

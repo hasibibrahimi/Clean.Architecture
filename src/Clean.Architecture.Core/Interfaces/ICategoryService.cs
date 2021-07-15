@@ -11,6 +11,7 @@ namespace Clean.Architecture.Core.Interfaces
     public interface ICategoryService
     {
         public void AddCategory(CategoryDTO category);
-        public List<Category> GetCategory();
+        public List<CategoryWithPostDTO> GetCategory();
+        public CategoryWithPostDTO GetCategoryWithId(int id);
     }
 }

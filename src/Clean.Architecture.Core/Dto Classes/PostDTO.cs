@@ -11,11 +11,13 @@ namespace Clean.Architecture.Core.Dto_Classes
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime DatePublished { get; set; }
-        public List<int> Category_PostId { get; set; }
+        public List<int> CategorysId { get; set; }
         public int UserId { get; set; }
+
     }
     public class PostwithCategoryDTO
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime DatePublished { get; set; }

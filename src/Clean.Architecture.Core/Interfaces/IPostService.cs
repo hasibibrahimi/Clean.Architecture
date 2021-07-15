@@ -10,7 +10,8 @@ namespace Clean.Architecture.Core.Interfaces
    public interface IPostService
     {
        public  void AddPost(PostDTO post);
-        public List<Post> GetPost();
+        public List<PostwithCategoryDTO> GetPost();
+        public PostwithCategoryDTO GetPostWithId(int id);
 
     }
 }
