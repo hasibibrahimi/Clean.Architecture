@@ -12,6 +12,8 @@ namespace Clean.Architecture.Core.Interfaces
     {
         public void AddUser(UserDTO user);
         public List<UserwithPostDTO> GetUser();
+
+        public void UpdateUser(int id, UserDTO user);
         public UserwithPostDTO GetUserWithId(int id);
         public void DeleteUser(int id);
 

@@ -45,6 +45,15 @@ namespace Clean.Architecture.Infrastructure
             }
             return asd;
         }
+        public void UpdateCategory(int id,CategoryDTO category)
+        {
+            var _response = _context.Categories.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _response.CategoryName = category.CategoryName;
+                _context.SaveChanges();
+            }
+        }
         public CategoryWithPostDTO GetCategoryWithId(int id)
         {
 

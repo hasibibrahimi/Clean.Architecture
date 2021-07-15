@@ -43,6 +43,19 @@ namespace Clean.Architecture.Infrastructure
 
             }
         }
+        public void UpdatePost(int id,PostDTO post)
+        {
+            var _response = _context.Posts.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _response.Title = post.Title;
+                _response.Content = post.Content;
+                _response.DatePublished = post.DatePublished;
+                _response.UserId = post.UserId;
+                _context.SaveChanges();
+                
+                }
+        }
         public List<PostwithCategoryDTO> GetPost()
         {
             // return _context.Posts.ToList();

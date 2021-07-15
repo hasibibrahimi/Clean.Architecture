@@ -28,6 +28,16 @@ namespace Clean.Architecture.Infrastructure
             _context.UserRoles.Add(_userRole);
             _context.SaveChanges();
         }
+        public void UpdateUserRole(int id,UserRoleDTO userRole)
+        {
+            var _response = _context.UserRoles.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _response.UserRoleName = userRole.UserRoleName;
+                _context.SaveChanges();
+            }
+        }
+
         public List<UserRoleWithUserDTO> GetUserRole()
         {
             var userRoles = _context.UserRoles.Include(t => t.Users);

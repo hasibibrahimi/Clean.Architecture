@@ -58,6 +58,12 @@ namespace Clean.Architecture.Web.Controllers
             _userRoleService.DeleteUserRole(id);
             return Ok();
         }
+        [HttpPut("User-Role-with-id/{id}")]
+        public IActionResult UpdateUserRole(int id,UserRoleDTO userRole)
+        {
+            _userRoleService.UpdateUserRole(id, userRole);
+            return Ok();
+        }
 
         [HttpPost("User")]
         public IActionResult AddUser(UserDTO user)
@@ -81,6 +87,12 @@ namespace Clean.Architecture.Web.Controllers
         public IActionResult DeleteUser(int id)
         {
             _userService.DeleteUser(id);
+            return Ok();
+        }
+        [HttpPut("User-with-id/{id}")]
+        public IActionResult UpdateUser(int id,UserDTO user)
+        {
+            _userService.UpdateUser(id, user);
             return Ok();
         }
         [HttpPost("Category")]
@@ -107,6 +119,12 @@ namespace Clean.Architecture.Web.Controllers
             _categoryService.DeleteCategory(id);
             return Ok();
         }
+        [HttpPut("Category-with-id/{id}")]
+        public IActionResult UpdateCategory(int id,CategoryDTO category)
+        {
+            _categoryService.UpdateCategory(id, category);
+            return Ok();
+        }
 
         [HttpPost("Post")]
         public IActionResult PostPost(PostDTO post)
@@ -130,6 +148,12 @@ namespace Clean.Architecture.Web.Controllers
         public IActionResult DeletePost(int id)
         {
             _postService.DeletePost(id);
+            return Ok();
+        }
+        [HttpPut("Post-with-id/{id}")]
+        public IActionResult UpdatePost(int id,PostDTO post)
+        {
+            _postService.UpdatePost(id, post);
             return Ok();
         }
         // GET project/{projectId?}

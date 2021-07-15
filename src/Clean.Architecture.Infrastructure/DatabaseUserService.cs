@@ -31,6 +31,19 @@ namespace Clean.Architecture.Infrastructure
             _context.Users.Add(_user);
             _context.SaveChanges();
         }
+        public void UpdateUser(int id,UserDTO user)
+        {
+            var _response = _context.Users.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _response.UserName = user.UserName;
+                _response.UserEmail = user.UserEmail;
+                _response.UserPassword = user.UserPassword;
+                _response.UserRoleId = user.UserRoleId;
+                _context.SaveChanges();
+           
+            }
+        }
         public List<UserwithPostDTO> GetUser()
         {
             // return _context.Users.ToList();
