@@ -13,5 +13,7 @@ namespace Clean.Architecture.Core.Interfaces
          public void AddUserRole(UserRoleDTO userRole);
         public List<UserRoleWithUserDTO> GetUserRole();
         public UserRoleWithUserDTO GetUserRoleWithId(int id);
+        public void DeleteUserRole(int id);
     }
+
 }

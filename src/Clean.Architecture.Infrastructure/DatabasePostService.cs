@@ -77,7 +77,15 @@ namespace Clean.Architecture.Infrastructure
                 Category_Posts = n.Category_Posts.Select(n => n.Category.CategoryName).ToList()
             }).FirstOrDefault();
             return _response;
-
+        }
+        public void DeletePost(int id)
+        {
+            var _response = _context.Posts.FirstOrDefault(n => n.Id == id);
+            if (_response!= null)
+            {
+                _context.Posts.Remove(_response);
+                _context.SaveChanges();
+            }
         }
     }
 }

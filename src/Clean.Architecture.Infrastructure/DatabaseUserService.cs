@@ -34,19 +34,19 @@ namespace Clean.Architecture.Infrastructure
         public List<UserwithPostDTO> GetUser()
         {
             // return _context.Users.ToList();
-            var userPost = _context.Posts.Include(t => t.User).ThenInclude(t=>t.UserRole);
+            var userPost = _context.Users.Include(t => t.UserRole);
             var r = userPost;
             List<UserwithPostDTO> test = new List<UserwithPostDTO>();
-            foreach (var item in r)
+            foreach (var item in r.Include(n=>n.Posts))
             {
                 var _response = new UserwithPostDTO()
                 {
-                    Id=item.User.Id,
-                    UserName = item.User.UserName,
-                    UserEmail = item.User.UserEmail,
-                    UserPassword = item.User.UserPassword,
-                    UserRoleName = item.User.UserRole.UserRoleName,
-                    PostsTitle=item.User.Posts.Select(n=>n.Title).ToList()
+                    Id=item.Id,
+                    UserName = item.UserName,
+                    UserEmail = item.UserEmail,
+                    UserPassword = item.UserPassword,
+                    UserRoleName = item.UserRole.UserRoleName,
+                    PostsTitle=item.Posts.Select(n=>n.Title).ToList()
                 };
                 test.Add(_response);
             }
@@ -66,6 +66,16 @@ namespace Clean.Architecture.Infrastructure
 
             }).FirstOrDefault();
             return _response;
+        }
+        public void DeleteUser(int id)
+        {
+            var _response = _context.Users.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _context.Users.Remove(_response);
+                _context.SaveChanges();
+            }
+
         }
     }
 }

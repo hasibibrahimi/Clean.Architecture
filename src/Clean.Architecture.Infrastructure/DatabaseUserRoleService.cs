@@ -66,7 +66,17 @@ namespace Clean.Architecture.Infrastructure
                 }).ToList()
             }).FirstOrDefault();
             return _userRole;
-
         }
+        public void DeleteUserRole(int id)
+        {
+            var _response = _context.UserRoles.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _context.UserRoles.Remove(_response);
+                _context.SaveChanges();
+            }
+        }
+
     }
+
 }

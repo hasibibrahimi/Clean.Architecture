@@ -13,5 +13,7 @@ namespace Clean.Architecture.Core.Interfaces
         public void AddUser(UserDTO user);
         public List<UserwithPostDTO> GetUser();
         public UserwithPostDTO GetUserWithId(int id);
+        public void DeleteUser(int id);
+
     }
 }

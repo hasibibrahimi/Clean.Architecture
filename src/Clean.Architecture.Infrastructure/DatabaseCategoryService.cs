@@ -56,5 +56,14 @@ namespace Clean.Architecture.Infrastructure
             }).FirstOrDefault();
             return _category;
         }
+        public void DeleteCategory(int id)
+        {
+            var _response = _context.Categories.FirstOrDefault(n => n.Id == id);
+            if (_response != null)
+            {
+                _context.Categories.Remove(_response);
+                _context.SaveChanges();
+            }
+        }
     }
 }

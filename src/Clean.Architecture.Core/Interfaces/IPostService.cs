@@ -12,6 +12,7 @@ namespace Clean.Architecture.Core.Interfaces
        public  void AddPost(PostDTO post);
         public List<PostwithCategoryDTO> GetPost();
         public PostwithCategoryDTO GetPostWithId(int id);
+        public void DeletePost(int id);
 
     }
 }
