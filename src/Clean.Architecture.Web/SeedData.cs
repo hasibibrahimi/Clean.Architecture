@@ -29,33 +29,33 @@ namespace Clean.Architecture.Web
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var dbContext = new AppDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
+                serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>()))
             {
                 // Look for any TODO items.
-                if (dbContext.ToDoItems.Any())
-                {
-                    return;   // DB has been seeded
-                }
+               // if (dbContext.ToDoItems.Any())
+               // {
+                 //   return;   // DB has been seeded
+              //  }
 
-                PopulateTestData(dbContext);
+                //PopulateTestData(dbContext);
 
 
             }
         }
-        public static void PopulateTestData(AppDbContext dbContext)
-        {
-            foreach (var item in dbContext.ToDoItems)
-            {
-                dbContext.Remove(item);
-            }
-            dbContext.SaveChanges();
+        /*  public static void PopulateTestData(AppDbContext dbContext)
+          {
+              foreach (var item in dbContext.ToDoItems)
+              {
+                  dbContext.Remove(item);
+              }
+              dbContext.SaveChanges();
 
-            TestProject1.AddItem(ToDoItem1);
-            TestProject1.AddItem(ToDoItem2);
-            TestProject1.AddItem(ToDoItem3);
-            dbContext.Projects.Add(TestProject1);
+              TestProject1.AddItem(ToDoItem1);
+              TestProject1.AddItem(ToDoItem2);
+              TestProject1.AddItem(ToDoItem3);
+              dbContext.Projects.Add(TestProject1);
 
-            dbContext.SaveChanges();
-        }
+              dbContext.SaveChanges();
+          }*/
     }
 }
